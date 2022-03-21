@@ -1,0 +1,31 @@
+server:
+  port: 8083
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/myoauth2
+    username: saulrb
+    password: Srm1510Pa
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/saulrb
+          jwk-set-uri: http://localhost:8080/realms/saulrb/protocol/openid-connect/certs
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          web:
+            FilterChainProxy: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type: trace
